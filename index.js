@@ -90,7 +90,18 @@ var finances = [
 // Total months equals to amount of entries in the finances array
 var totalMonths = finances.length;
 
+//Initialize variables
+var totalProfit = 0;
 
+// Loop over the entire finances array
+for( i=0; i<finances.length ; i++){
+  totalProfit+= finances[i][1]; //add the profit value from each month 
+}
+
+
+//Display results in console
 console.log("Financial Analysys:");
 console.log("--------------------")
 console.log("Total months: "+totalMonths);
+console.log("Total: $"+totalProfit);
+
