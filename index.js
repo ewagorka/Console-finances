@@ -92,16 +92,27 @@ var totalMonths = finances.length;
 
 //Initialize variables
 var totalProfit = 0;
+var totalChanges = 0; 
+var averageChanges = 0;
 
 // Loop over the entire finances array
 for( i=0; i<finances.length ; i++){
   totalProfit+= finances[i][1]; //add the profit value from each month 
+
+  //iterate starting from the second month 
+  if(i>0){
+    totalChanges += finances[i][1] - finances[i-1][1]; //calculate the difference from month to month
+  }
 }
 
+averageChanges = totalChanges/(finances.length -1);
+//Round up to 2 digits after comma
+averageChanges = averageChanges.toFixed(2);
 
 //Display results in console
 console.log("Financial Analysys:");
 console.log("--------------------")
 console.log("Total months: "+totalMonths);
 console.log("Total: $"+totalProfit);
+console.log("Average change: $"+averageChanges);
 
