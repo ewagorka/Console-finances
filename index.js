@@ -86,3 +86,11 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+// Total months equals to amount of entries in the finances array
+var totalMonths = finances.length;
+
+
+console.log("Financial Analysys:");
+console.log("--------------------")
+console.log("Total months: "+totalMonths);
