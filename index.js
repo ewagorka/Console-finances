@@ -95,13 +95,33 @@ var totalProfit = 0;
 var totalChanges = 0; 
 var averageChanges = 0;
 
+var greatestProfit=0;
+var greatestLoss = 0;
+
+var currentChange=0;
+
+var profitMonth = '';
+var lossMonth ='';
+
 // Loop over the entire finances array
 for( i=0; i<finances.length ; i++){
   totalProfit+= finances[i][1]; //add the profit value from each month 
 
   //iterate starting from the second month 
   if(i>0){
-    totalChanges += finances[i][1] - finances[i-1][1]; //calculate the difference from month to month
+    totalChanges += finances[i][1] - finances[i-1][1]; // add current change in profit and losses to totalChange
+
+    //Greatest profit and loss
+    currentChange = finances[i][1] - finances[i-1][1]; // track current change in profit and losses
+    
+    if(currentChange > greatestProfit){ //if currentChange is bigger than greatestProfit, assign the current change value to greatestProfit
+      greatestProfit = currentChange;
+      profitMonth = finances[i][0]; // assign the month from the current iteration to profitMonth
+
+    }else if(currentChange < greatestLoss){ //if currentChange is smaller than greatestLoss, assign the current change value to greatestLoss
+      greatestLoss = currentChange;
+      lossMonth = finances[i][0]; // assign the month from the current iteration to lossMonth
+    }
   }
 }
 
@@ -115,4 +135,6 @@ console.log("--------------------")
 console.log("Total months: "+totalMonths);
 console.log("Total: $"+totalProfit);
 console.log("Average change: $"+averageChanges);
+console.log("Greatest Increase in Profits/Losses: "+profitMonth+" : $("+greatestProfit+")");
+console.log("Greatest Decrease in Profits/Losses: "+lossMonth+" : $("+greatestLoss+")");
 
